@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>201635010115-在线视频免费看</title>
+    <meta name="keywords" content="在线影院">
+    <meta name="description" content="201635010115在线影院">
+    <meta name="author" content="201635010115">
+    <link rel="shortcut icon" href="/www/favicon.ico">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/www/css/base.css">
+    <link rel="stylesheet" href="/www/css/index.css">
+
+</head>
+<div class="progress" id="progress" style="height:3px;background-color:red;z-index:9999;position:fixed"></div>
+<header class="header">
+    <div class="header-line"></div>
+    <div class="banner">
+        <div class="search">
+            <div class="searchIn clearFix">
+                <div class="video-logo" onclick='window.open("/","_self")'>
+                    <span class="logo-title"><img src="/www/images/nav.png" alt=""></span></div>
+                <div class="searchMiddle"><i class="fa fa-search"></i><label for="se"></label><input id="se" type="text"
+                                                                                                     placeholder="搜索视频" autocomplete="on"><span
+                        onclick='window.open("/search/"+a(),"_self")'>搜全网</span></div>
+                <div class="searchRight">
+                    <ul>
+
+                        {{#if (user)}}
+                        <li><p class="fa fa-user"></p><br><span><a href="/user">会员</a></span></li>
+                        {{else}}
+                        <li><p class="fa fa-user"></p><br><span><a href="/login">登录</a></span></li>
+                        {{/if}}
+                        <li><p class="fa fa-heart"></p><br><span><a href="/user">收藏</a></span></li>
+                        <li><p class="fa fa-upload"></p><br><span><a href="/user">上传</a></span></li>
+                    </ul>
+                    {{#if (user)}} <a href="/user" class="logo"><img src="{{user.face}}" alt=""></a>{{else}} <a
+                        href="/login" class="logo"><img src="/www/images/userlogo.gif" alt=""></a>{{/if}}
+                </div>
+            </div>
+        </div>
+        <div class="search" id="search">
+            <div class="header-line"></div>
+            <div class="searchIn clearFix">
+                <div class="video-logo" onclick="location.reload()"><img src="/www/images/vip.png" alt=""></div>
+                <div class="searchMiddle"><i class="fa fa-search"></i><input type="text" placeholder="搜索视频"><span
+                        onclick='window.open("/search/ "+a(),"_self")'>搜全网</span></div>
+                <div class="searchRight">
+                    <ul>
+
+                        {{#if (user)}}
+                        <li><p class="fa fa-user"></p><br><span><a href="/user">会员</a></span></li>
+                        {{else}}
+                        <li><p class="fa fa-user"></p><br><span><a href="/login">登录</a></span></li>
+                        {{/if}}
+                        <li><p class="fa fa-heart"></p><br><span><a href="/user">收藏</a></span></li>
+                        <li><p class="fa fa-upload"></p><br><span><a href="/user">上传</a></span></li>
+                    </ul>
+                    {{#if (user)}} <a href="/user" class="logo"><img src="{{user.face}}" alt=""></a>{{else}} <a
+                        href="/login" class="logo"><img src="/www/images/userlogo.gif" alt=""></a>{{/if}}
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="navIn">
+                <ul class="clearFix">
+                    <li><a href="#show_movie">电影</a></li>
+                    <li><a href="#show_tv">电视剧</a></li>
+                    <li><a href="#show_variety">综艺</a></li>
+                    <li><a href="#show_cartoon">动漫</a></li>
+                    <li><a href="/search/少儿">少儿</a></li>
+                    <li><a href="/search/娱乐">娱乐</a></li>
+                    <li><a href="/search/音乐">音乐</a></li>
+                    <li><a href="/search/演唱会">演唱会</a></li>
+                    <li><a href="/search/美剧">美剧</a></li>
+                    <li><a href="/search/韩剧">韩剧</a></li>
+                    <li><a href="/search/纪录片">纪录片</a></li>
+                    <li><a href="/search/微电影">微电影</a></li>
+                    <li><a href="/search/新闻">新闻</a></li>
+                    <li><a href="/search/在线影院">在线影院</a></li>
+                    <li><a href="/search/体育">体育</a></li>
+                    <li><a href="/search/NBA">NBA</a></li>
+                    <li><a href="/search/搞笑">搞笑</a></li>
+                    <li><a href="/search/游戏">游戏</a></li>
+                    <li><a href="/search/原创">原创</a></li>
+                    <li><a href="/search/时尚">时尚</a></li>
+                    <li><a href="/search/生活">生活</a></li>
+                    <li><a href="/search/拍客">拍客</a></li>
+                    <li class="在线"><a href="javascript:;">在线</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bannerImg" id="banner">
+            {{#if (previews)}} {{#each (previews)}} <a href="/play/{{this.playurl}}"><img class="imgp"
+                                                                                          src="{{this.imgurl}}" alt="">
+            {{/each}} {{/if}}
+            <ul>
+                <li class="show">
+                    <a href="/play/{{previews[0].playurl}}"><span class="span1">{{previews[0].title}}:</span><span
+                            class="span2">{{previews[0].content}}</span></a></li>
+                {{#if (previews)}} {{#each (previews)}} {{#if (xindex !== 0)}}
+                <li><a href="/play/{{this.playurl}}"><span class="span1">{{this.title}}：</span><span class="span2">{{this.content}}</span></a>
+                </li>
+                {{/if}} {{/each}} {{/if}}
+            </ul>
+            <div class="mask"></div>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <section class="section clearFix">
+        <div class="title clearFix"><h2>今日热点</h2>
+            <p><a href="javascript:;">最新电影任你看</a></p><span><em></em><a id="change_hot"
+                                                                       style="cursor:pointer">换一换</a></span>
+        </div>
+        <div class="list">
+            <div class="left"><a href="/play/{{hotMovies.hot.url}}"><img src="" realimg="{{hotMovies.hot.imgurl}}"
+                                                                         alt=""></a>
+
+            </div>
+            <ul class="right clearFix" id="hot_movie_top">
+                <li class="li3"><a href="/play/{{hotMovies.movies[0].url}}"><img src=""
+                                                                                 realimg="/www/uploads/movies/{{hotMovies.movies[0].id}}.jpg"
+                                                                                 alt=""></a>
+                    <p>{{hotMovies.movies[0].title}}</p><span>{{hotMovies.movies[0].info}}</span></li>
+                <li class="li3"><a href="/play/{{hotMovies.movies[1].url}}"><img src=""
+                                                                                 realimg="/www/uploads/movies/{{hotMovies.movies[1].id}}.jpg"
+                                                                                 alt=""></a>
+                    <p>{{hotMovies.movies[1].title}}</p><span>{{hotMovies.movies[1].info}}</span></li>
+                <li class="li3"><a href="/play/{{hotMovies.movies[2].url}}"><img src=""
+                                                                                 realimg="/www/uploads/movies/{{hotMovies.movies[2].id}}.jpg"
+                                                                                 alt=""></a>
+                    <p>{{hotMovies.movies[2].title}}</p><span>{{hotMovies.movies[2].info}}</span></li>
+            </ul>
+            <ul class="right clearFix right-b" id="hot_movie_bottom">
+                <li class="li3"><a href="/play/{{hotMovies.movies[3].url}}"><img src=""
+                                                                                 realimg="/www/uploads/movies/{{hotMovies.movies[3].id}}.jpg"
+                                                                                 alt=""></a>
+                    <p>{{hotMovies.movies[3].title}}</p><span>{{hotMovies.movies[3].info}}</span></li>
+                <li class="li3"><a href="/play/{{hotMovies.movies[4].url}}"><img src=""
+                                                                                 realimg="/www/uploads/movies/{{hotMovies.movies[4].id}}.jpg"
+                                                                                 alt=""></a>
+                    <p>{{hotMovies.movies[4].title}}</p><span>{{hotMovies.movies[4].info}}</span></li>
+                <li class="li3"><a href="/play/{{hotMovies.movies[5].url}}"><img src=""
+                                                                                 realimg="/www/uploads/movies/{{hotMovies.movies[5].id}}.jpg"
+                                                                                 alt=""></a>
+                    <p>{{hotMovies.movies[5].title}}</p><span>{{hotMovies.movies[5].info}}</span></li>
+                <li class="li3"><a href="/play/{{hotMovies.movies[6].url}}"><img src=""
+                                                                                 realimg="/www/uploads/movies/{{hotMovies.movies[6].id}}.jpg"
+                                                                                 alt=""></a>
+                    <p>{{hotMovies.movies[6].title}}</p><span>{{hotMovies.movies[6].info}}</span></li>
+                <li class="li3"><a href="/play/{{hotMovies.movies[7].url}}"><img src=""
+                                                                                 realimg="/www/uploads/movies/{{hotMovies.movies[7].id}}.jpg"
+                                                                                 alt=""></a>
+                    <p>{{hotMovies.movies[7].title}}</p><span>{{hotMovies.movies[7].info}}</span></li>
+            </ul>
+        </div>
+    </section>
+    <section id="show_tv" class="section clearFix alone">
+        <div class="title clearFix"><h2>电视剧</h2>
+            <div class="titleRight"><span><em></em><a href="javascript:;" id="change_tv">换一换</a></span></div>
+        </div>
+        <div class="list">
+            <ul class="right clearFix" id="tv_container"></ul>
+        </div>
+    </section>
+    <section id="show_cartoon" class="section clearFix alone">
+        <div class="title clearFix"><h2>动漫</h2>
+            <div class="titleRight"><span><em></em><a href="javascript:;" id="change_cartoon">换一换</a></span></div>
+        </div>
+        <div class="list">
+            <ul class="right clearFix" id="cartoon_container"></ul>
+        </div>
+    </section>
+    <section id="show_variety" class="section clearFix alone">
+        <div class="title clearFix"><h2>综艺</h2>
+            <div class="titleRight"><span><em></em><a href="javascript:;" id="change_variety">换一换</a></span></div>
+        </div>
+        <div class="list">
+            <ul class="right clearFix" id="variety_container"></ul>
+        </div>
+    </section>
+
+    <section id="show_movie" class="section clearFix alone">
+        <div class="title clearFix"><h2>电影大片</h2>
+            <div class="titleRight"><span><em></em><a href="javascript:;" id="change_movie">换一换</a></span></div>
+        </div>
+        <div class="list moveBig"><input type="hidden" value="{{pageNum}}" id="movie_pageNum">
+            <ul class="right clearFix moveBig" id="movie_container">{{#if (movies)}} {{#each (movies)}}
+                <li class="li1"><a href="/play/{{this.url}}" class="pos"><img src=""
+                                                                              realimg="/www/uploads/movies/{{this.id}}.jpg"
+                                                                              alt=""> <em>{{this.info}}</em></a>
+                    <p class="p">{{this.title}}</p></li>
+                {{/each}} {{/if}}
+            </ul>
+        </div>
+    </section>
+</main>
+<div class="top">
+    <div class="toTop toTopX" id="toTop"><p><i></i></p><span>返回顶部</span></div>
+    <div class="toTop" onclick=''><p><i class="i2"></i></p>
+    </div>
+</div>
+{{{include ("./foot1")}}}
+<script src="/www/js/hogan.min.js"></script>
+<script src="/www/js/utils.js"></script>
+<script src="/www/js/move.js"></script>
+<script src="/www/js/index.js"></script>
+</html>

@@ -1,0 +1,172 @@
+{{extend ("../layout")}} {{#block ("head")}}
+<link rel="stylesheet" href="../../www/css/user.css">
+{{/block}} {{#block ("body")}}
+<div class="userinfo clearfix">
+    <div class="w">
+        <div class="userinfo-l">
+            <ul id="userinfo">
+                <li id="s" class="current">用户列表</li>
+                <form action="/admin/userlist" method="post" id="form1" >
+                    <input type="text" name="id"style="width:271px;height:30px" placeholder="输入会员编号进行删除"><br>
+                    <input type="submit" onclick="return confirm('确定删除?')" style="width:271px;height:30px"  value="删除会员">
+                </form>
+                <li>修改密码</li>
+                <li id="comment-logs">评论记录</li>
+                <li id="login-logs">登录日志</li>
+                <form action="" method="post" id="fo">
+                    <select name="3"id="select">
+                        <option >视频列表</option>
+                        <option value="movies">电影</option>
+                        <option value="tvs">电视剧</option>
+                        <option value="cartoons">动画片</option>
+                        <option value="varietys">综艺</option>
+                    </select>
+                </form>
+                <li id="col-movie">搜索视频</li>
+                <input type="text" style="width:271px;height:30px"placeholder="输入名称搜索视频" id="sea">
+            </ul>
+
+            <div class="dropdown">
+                <button class="dropbtn">自动抓取视频</button>
+                <div class="dropdown-content">
+                    <button  id="movies">电影</button>
+                    <button  id="tvs">电视</button>
+                    <button  id="cartoons">动漫</button>
+                    <button  id="varietys">综艺</button>
+                    <button  id="sports">体育</button>
+                    <button  id="record">纪录片</button>
+                    <button  id="children">儿童影视</button>
+                    <button  id="music">演唱会</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="userinfo-r">
+
+            <div class="user-center"><span class="title">会员中心</span>
+                <table class="table-con">
+                    <tbody id="userlist-con"></tbody>
+                </table>
+            </div>
+
+            <div class="user-pwd"><span class="title">修改密码</span>
+                <form action="/user" method="post" id="pwd-form"><label for="pwd1" id="pwd1lb">旧密码</label> <input
+                        type="password" placeholder="旧密码" name="pwd1" id="pwd1"> <label for="pwd2"
+                                                                                        id="pwd2lb">新密码</label> <input
+                        type="password" placeholder="新密码" name="pwd2" id="pwd2">
+                    <button type="submit">修改密码</button>
+                    <input type="hidden" value="pwd3" name="pwd3"></form>
+            </div>
+
+            <div class="user-comment">
+                <div class="comment-con"><span class="title">评论记录</span>
+                    <div class="con clearfix" id="comments">
+                    </div>
+                    <div class="comments-page">
+                        <div class="w">
+                            <ul id="comments-page">
+                                <li><a class="page-btn" href="#" id="firstPage">首页</a></li>
+                                <li><a class="page-btn" href="#" id="lastPage">上一页</a></li>
+                                <li><a class="page-btn" href="#"><i id="pageNow">1</i>&nbsp;/&nbsp;<i id="pageNum">{{pageNum}}</i></a>
+                                </li>
+                                <li><a class="page-btn" href="#" id="nextPage">下一页</a></li>
+                                <li><a class="page-btn" href="#" id="endPage">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="user-logininglog"><span class="title">登录日志</span>
+                <table class="table-con">
+                    <tbody id="userlogs-con"></tbody>
+                </table>
+            </div>
+            <div class="user-moviecol clearfix"><span class="title">视频</span>
+                <div id="user-colmovie" class="user-colmovie">
+                </div>
+                <div class="comments-page">
+                    <div class="w">
+                        <ul id="movie-page">
+                            <li><a class="page-btn" href="#" id="fPage">首页</a></li>
+                            <li><a class="page-btn" href="#" id="lPage">上一页</a></li>
+                            <li><a class="page-btn" href="#"><i id="pNow">1</i>&nbsp;/&nbsp;<i id="pNum">{{pageNum}}</i></a>
+                            </li>
+                            <li><a class="page-btn" href="#" id="nPage">下一页</a></li>
+                            <li><a class="page-btn" href="#" id="ePage">尾页</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="toastWindow clearfix" id="toastWindow">
+    <div class="w">
+        <div class="upload-window">
+            <div class="upload-title">添加视频</div>
+            <div class="upload-line"></div>
+            <div class="upload-info"><span class="upload-file-title"
+                                           id="upload-file-title"></span>
+                <form action="" class="upload-form" id="upload-form"><input type="file" class="upload-file"
+                                                                            id="upload-file">
+                    <div class="upload-line"></div>
+                    <button class="upload-cancel">取消</button>
+                    <button class="upload-ok">点击上传</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="toastWindow clearfix" id="toastWindow">
+    <div class="w">
+        <div class="upload-window">
+            <div class="upload-title">上传图片</div>
+            <div class="upload-line"></div>
+            <div class="upload-info"><span class="upload-file-title"
+                                           id="upload-file-title">请选择要上传的图片（大小限制：100*100）</span>
+                <form action="" class="upload-form" id="upload-form"><input type="file" class="upload-file"
+                                                                            id="upload-file">
+                    <div class="upload-line"></div>
+                    <button class="upload-cancel">取消</button>
+                    <button class="upload-ok">点击上传</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>{{/block}} {{#block ("foot")}}
+<script src="/www/js/admin.js"></script>
+<script> function de(obj) {
+    var th=$(obj).parent().parent().parent()
+    var id=$(obj).attr('id')
+    var q= window.confirm('确定删除？')
+    th.hide()
+    if (q===true) {
+        $.ajax({
+            url: '/admin/delet',
+            dataType: "json",
+            type: "post",
+            data: {id: id},
+            success: function (e) {
+            }
+        })
+    }
+}
+function delcom(obj) {
+
+    var id=$(obj).attr('id')
+    var q= window.confirm('确定删除'+id+'号评论？')
+    $(obj).parent().parent().parent().hide()
+    if (q===true) {
+        $.ajax({
+            url: '/admin/comment',
+            dataType: "json",
+            type: "post",
+            data: {id: id},
+            success: function (e) {
+            }
+        })
+    }
+}
+</script>{{/block}}

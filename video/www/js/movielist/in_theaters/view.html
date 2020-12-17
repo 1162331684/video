@@ -1,0 +1,28 @@
+<table width="100%" style="margin-left: 16px" style="font-size: 15px" >
+    <div style="height: 100%; width: 100%; float: left;">
+        <tfoot style="line-height: 35px">
+        <tr>
+            <td ng-class="{disabled: page <= 1}" colspan="3" style="text-align: left; cursor: pointer"><a ng-click="go(page-1)">上一页</a></td>
+            <td ng-class="{disabled: page >= totalPage}" colspan="3" style="text-align: center; cursor: pointer"><a ng-click="go(page+1)">下一页</a></td>
+        </tr>
+        </tfoot>
+
+        <tbody >
+
+
+        <!--通过ng-repaat重复显示数据信息-->
+        <tr style="text-align: center" ng-repeat="movie in movies track by $index" >
+            <td width="158px"  style="text-align: left"><a href="/search/{{movie.title}}" style="display: block; width: 158px ;">{{movie.title}}</a></td>
+            <td width="90px" style="text-align: left">{{movie.genres[0]}}</td>
+            <td width="80x" style="text-align: left">{{movie.year}}</td>
+            <td width="66px" style="text-align: left">{{movie.rating.average}}</td>
+        </tr>
+
+
+        </tbody>
+        <div ng-show="loading" style="text-align: center; line-height: 500px">
+            <img src="/www/images/loadingnow.gif" alt="" style="">
+        </div>
+    </div>
+
+</table >

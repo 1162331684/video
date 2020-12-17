@@ -1,0 +1,1 @@
+"http://jx.598110.com/index.php?url=" + n), "03" === o && (document.getElementById("video_iframe").src = "http://17kyun.com/api.php?url=" + n)) : "01" === o && (document.getElementById("video_iframe").src = "http://www.administrator5.com/admin.php?url=" + n)
