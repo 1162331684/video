@@ -1,0 +1,30 @@
+<div class="site-nav clearfix">
+    <div class="w">
+        <div class="site-nav-logo"><a href="/" class="logo"><img width="90" height="38" src="/www/images/vip.png" alt="">首页</a><br><a
+                style="color:#1372d5;font-weight:700;text-align:right;font-family:'Microsoft YaHei',serif" class="box"></a>
+        </div>
+        <div class="site-nav-search">
+            <form action="/search" method="POST"><input type="text" placeholder="请输入电影名称或URL地址" name="moviename">
+                <button type="submit">搜索</button>
+            </form>
+        </div>
+        <div class="site-nav-r">
+            <ul>
+                <li><a href="#"></a></li>
+                {{#if (user)}}
+                <li><a href="/">电影</a></li>
+                <li><a href="/logout">退出</a></li>
+                <li class="site-nav-user"><a href="/user">{{user.uname}}</a><img src="{{user.face}}" alt=""
+                                                                                 onclick='window.open("/user","_self")'>
+                </li>
+
+                {{else}}
+                <li><a href="/">电影</a></li>
+                <li><a href="/login">登录</a></li>
+                <li><a href="/register">注册</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="progress" id="progress" style="height:3px;background-color:#014df8;z-index:9999;position:fixed"></div>
